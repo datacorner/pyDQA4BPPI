@@ -4,7 +4,7 @@ from report import Report
 
 # First argument is the dataset file to check & validate
 # Test with
-# cd C:\Git\bppi\pibppidqa>
+# cd C:\Git\bppi\pibppidqa
 # py DQA4BPPI.py InternationalDeclarations.csv id concept:name time:timestamp
 
 def check_cols_in_dataset(ds_df, pfi, sn, t):
