@@ -4,6 +4,9 @@ class DataSource:
     def __init__(self, _filename):
         self.filename = _filename
         self.dataset = pd.DataFrame()
+    
+    def isOpened(self):
+        return
         
     def open(self):
         try:
