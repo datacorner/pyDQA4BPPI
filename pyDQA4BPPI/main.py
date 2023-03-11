@@ -1,6 +1,7 @@
 import pandas as pd
 import sys
 from report import Report
+from datasource import DataSource
 
 # First argument is the dataset file to check & validate
 # Test with
@@ -42,8 +43,6 @@ def colfreq_10first(ds_df, col):
     return res
 
 if __name__ == "__main__":
-    rpt = Report(1)
-    rpt.display("toto")
     # Chack arguments
     if len( sys.argv ) != 5:
         print( "DQA For BPPI Report generator" )
@@ -55,13 +54,19 @@ if __name__ == "__main__":
     pfi_key = sys.argv[2]
     ps_key = sys.argv[3]
     t_key = sys.argv[4]
-    print ("INFO> Data Quality Check for the file <", dataset_filename, ">" )
+    ds = DataSource(dataset_filename, pfi_key, ps_key, t_key)
+    ds.open()
+    if (ds.isOpened()):
+        print ("INFO> Data Quality Check for the file <", dataset_filename, ">" )
+    
     try:
         # Check if the 3 fields really exists in the dataset
         print ("INFO> Load dataset ...")
         dataset_df = pd.read_csv(dataset_filename)
+        
         print ("INFO> Dataset loaded")
         check, error_message = check_cols_in_dataset(dataset_df, pfi_key, ps_key, t_key)
+        
         if (check):
             print("INFO> DQA CHECK OK: The 3 mandatory fields/columns have been identified in the dataset")
             dataset_df_first10 = dataset_df.head(10)

@@ -1,18 +1,20 @@
 
+# Levels:
+#    1 -> DEBUG
+#    2 -> INFO
+#    3 -> ERROR
 
 class Report:
-    def __init__(self):
-        self.m_output = False
-        self.m_fileread = False
-    def set_output(self):
-        self.m_output = True
-    def set_fileread(self, status):
-        self.m_fileread = status
+    def __init__(self, _debug = True, _info = True, _error = True):
+        self.m_info = _info
+        self.m_debug = _debug
+        self.m_error = _error
         
-    def log(self, *message):
+    def info(self, *message):
         if (self.m_output):
             final_message =""
             for msg in message:
                 final_message += msg
-            print(final_message)
+            if (self.m_info):
+                print(final_message)
     
