@@ -11,10 +11,25 @@ class Report:
         self.m_error = _error
         
     def info(self, *message):
-        if (self.m_output):
+        if (self.m_info):
             final_message =""
             for msg in message:
                 final_message += msg
             if (self.m_info):
-                print(final_message)
-    
+                print("INFO>" + final_message)
+
+    def error(self, *message):
+        if (self.m_error):
+            final_message =""
+            for msg in message:
+                final_message += msg
+            if (self.m_info):
+                print("ERROR>" + final_message)
+                
+    def debug(self, *message):
+        if (self.m_debug):
+            final_message =""
+            for msg in message:
+                final_message += msg
+            if (self.m_info):
+                print("DEBUG>" + final_message)
