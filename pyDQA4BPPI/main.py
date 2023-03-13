@@ -48,14 +48,14 @@ if __name__ == "__main__":
     print ("\n")
     
     # Counts & freq distrib for the Timeline ID
-    print ("Number of different values for <", pfi_key, ">", ds.countDiffValues(pfi_key))
-    pfi_freq_df = ds.countDiffValues(pfi_key)
+    print ("Number of different values for <", pfi_key, ">", ds.countDistinctValues(pfi_key))
+    pfi_freq_df = ds.distinctValues(pfi_key)
     print ("First 10 values for <", pfi_key, ">\n", pfi_freq_df) 
     print ("\n")
     
     # Counts & freq distrib for the Event ID
-    print ("Number of different values for <", ps_key, ">", ds.countDiffValues(ps_key))
-    ps_freq_df = ds.countDiffValues(ps_key)
+    print ("Number of different values for <", ps_key, ">", ds.countDistinctValues(ps_key))
+    ps_freq_df = ds.distinctValues(ps_key)
     print ("First 10 values for <", ps_key, ">\n", ps_freq_df)
     print ("\n")
     

@@ -14,9 +14,9 @@ class DataSource:
     def open(self):
         try:
             self.m_dataset = pd.read_csv(self.m_filename)
-            return True
+            return True, None
         except Exception as e:
-            return False
+            return False, e
         
     # Check if the 3 fields really exists in the dataset
     def checkColumns(self):
@@ -78,7 +78,11 @@ class DataSource:
         else:
             return None
         
-    def countDiffValues(self, _colName):
+    def countDistinctValues(self, _colName):
         return len(self.m_dataset[_colName].value_counts())
+
+    def distinctValues(self, _colName):
+        return self.m_dataset[_colName].value_counts()
+    
     
     
