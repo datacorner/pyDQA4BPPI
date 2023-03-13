@@ -1,6 +1,7 @@
 import sys
 from report import Report
 from datasource import DataSource
+from chart import Chart
 
 # First argument is the dataset file to check & validate
 # Test with
@@ -49,14 +50,16 @@ if __name__ == "__main__":
     
     # Counts & freq distrib for the Timeline ID
     print ("Number of different values for <", pfi_key, ">", ds.countDistinctValues(pfi_key))
-    pfi_freq_df = ds.distinctValues(pfi_key)
-    print ("First 10 values for <", pfi_key, ">\n", pfi_freq_df) 
+    pfi_freq_df = ds.colFreqDistrib(pfi_key)
+    ch1 = Chart()
+    ch1.line(pfi_freq_df, "Column", "Frequency")
+    print ("First 10 values for <", pfi_key, "> ", pfi_freq_df) 
     print ("\n")
     
     # Counts & freq distrib for the Event ID
     print ("Number of different values for <", ps_key, ">", ds.countDistinctValues(ps_key))
     ps_freq_df = ds.distinctValues(ps_key)
-    print ("First 10 values for <", ps_key, ">\n", ps_freq_df)
+    #print ("First 10 values for <", ps_key, "> ", ps_freq_df)
     print ("\n")
     
     
